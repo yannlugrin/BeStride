@@ -219,16 +219,16 @@ function BeStride_Mount:DemonHunterGlide()
 end
 
 function BeStride_Mount:Druid()
-	local travelForm, flightForm = 783, 783 -- 3 in 1 travel form
+	local travelForm, flightForm = BeStride_Constants.spells.druid.travelform, BeStride_Constants.spells.druid.flightform -- 3 in 1 travel form
 
 	if GetUnitSpeed("player") ~= 0 then
-		return self:MountSpell(SpellToName(783))
+		return self:MountSpell(SpellToName(travelForm))
 	elseif BeStride:DruidFlyingMTFF() or IsFalling() or IsFlying() or GetShapeshiftForm() == 3 then
-		return self:MountSpell(SpellToName(783))
+		return self:MountSpell(SpellToName(flightForm))
 	elseif IsFlying() then
-		return self:Flying(name)
+		return self:Flying()
 	else
-		return self:Regular(name)
+		return self:Regular()
 	end
 end
 
